@@ -5,6 +5,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\PizzaController;
+use App\Http\Controllers\PublicPizzaController;
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -26,6 +27,8 @@ Route::get('/pizzas/{pizza}', [PizzaController::class, 'edit'])->name('pizzas.ed
 
 // Ruta para procesar la actualización (usando PATCH para actualizaciones parciales)
 Route::patch('/pizzas/{pizza}', [PizzaController::class, 'update'])->name('pizzas.update');
+
+Route::get('/order/{pizza}', [PublicPizzaController::class, 'show'])->name('public.pizzas.show');
 
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

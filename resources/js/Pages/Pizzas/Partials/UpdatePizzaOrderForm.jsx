@@ -17,8 +17,6 @@ export default function UpdatePizzaOrderForm({ pizza, className = "" }) {
 
     const submit = (e) => {
         e.preventDefault();
-
-        // Asegúrate de que preserveScroll está dentro del objeto de opciones
         patch(route("pizzas.update", pizza.id), {
             preserveScroll: true,
         });
