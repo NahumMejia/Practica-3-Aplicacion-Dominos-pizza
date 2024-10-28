@@ -3,7 +3,9 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Arr; // Importar Arr
+use Illuminate\Support\Arr;
+use App\Models\User;
+use App\Models\Pizza;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Pizza>
@@ -38,8 +40,7 @@ class PizzaFactory extends Factory
         $toppings = array_unique($toppings);
 
         return [
-            'id' => rand(11111, 99999),
-            'user_id' => rand(1, 10),
+            'user_id' => User::factory(),
             'size' => Arr::random(['Small', 'Medium', 'Large', 'Extra-Large']),
             'crust' => Arr::random(['Normal', 'Thin', 'Garlic']),
             'toppings' => $toppings,
@@ -47,4 +48,3 @@ class PizzaFactory extends Factory
         ];
     }
 }
-
